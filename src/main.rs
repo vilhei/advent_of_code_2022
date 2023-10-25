@@ -2,7 +2,7 @@ use std::env;
 
 use advents::{
     utils::{Task, TaskError},
-    Day1, Day2,
+    *,
 };
 
 fn main() {
@@ -17,6 +17,7 @@ fn main() {
     let advent: Box<dyn Task> = match day {
         1 => Box::new(Day1),
         2 => Box::new(Day2),
+        3 => Box::new(Day3),
         _ => panic!("Not acceptable day argument"),
     };
 

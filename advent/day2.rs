@@ -1,10 +1,8 @@
-use crate::utils::{read_task_input_file, Task, TaskPartOne, TaskPartTwo};
+use crate::utils::{read_task_input_file, Task};
 
 pub struct Day2;
 
-impl Task for Day2 {}
-
-impl TaskPartOne for Day2 {
+impl Task for Day2 {
     fn task_part_one(&self, input_file: &str) -> Result<String, crate::utils::TaskError> {
         let file_contents = read_task_input_file(input_file)?;
         let separator = "\n";
@@ -36,8 +34,6 @@ impl TaskPartOne for Day2 {
 
         Ok(point_sum.to_string())
     }
-}
-impl TaskPartTwo for Day2 {
     fn task_part_two(&self, input_file: &str) -> Result<String, crate::utils::TaskError> {
         let file_contents = read_task_input_file(input_file)?;
         let separator = "\n";
@@ -70,6 +66,9 @@ impl TaskPartTwo for Day2 {
         Ok(point_sum.to_string())
     }
 }
+
+// impl TaskPartOne for Day2 {}
+// impl TaskPartTwo for Day2 {}
 
 #[derive(PartialEq, Clone, Copy)]
 enum Rps {

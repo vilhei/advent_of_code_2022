@@ -1,12 +1,10 @@
 use std::collections::HashSet;
 
-use crate::utils::{read_task_input_file, Task, TaskPartOne, TaskPartTwo};
+use crate::utils::{read_task_input_file, Task};
 
 pub struct Day3;
 
-impl Task for Day3 {}
-
-impl TaskPartOne for Day3 {
+impl Task for Day3 {
     fn task_part_one(&self, input_file: &str) -> Result<String, crate::utils::TaskError> {
         let file_contents = read_task_input_file(input_file)?;
         let splitted = file_contents.split('\n');
@@ -34,8 +32,6 @@ impl TaskPartOne for Day3 {
 
         Ok(total_score.to_string())
     }
-}
-impl TaskPartTwo for Day3 {
     fn task_part_two(&self, input_file: &str) -> Result<String, crate::utils::TaskError> {
         let file_contents = read_task_input_file(input_file)?;
         let splitted = file_contents.split('\n');
@@ -61,9 +57,13 @@ impl TaskPartTwo for Day3 {
                 'A'..='Z' => *common as u32 - 38,
                 _ => panic!("Not an english alphabet letter"),
             };
+
             total_score += score;
         });
 
         Ok(total_score.to_string())
     }
 }
+
+// impl TaskPartOne for Day3 {}
+// impl TaskPartTwo for Day3 {}

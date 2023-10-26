@@ -1,10 +1,8 @@
-use crate::utils::{read_task_input_file, Task, TaskError, TaskPartOne, TaskPartTwo};
+use crate::utils::{read_task_input_file, Task, TaskError};
 
 pub struct Day1;
 
-impl Task for Day1 {}
-
-impl TaskPartOne for Day1 {
+impl Task for Day1 {
     fn task_part_one(&self, input_file: &str) -> Result<String, TaskError> {
         let file_contents = read_task_input_file(input_file)?;
         let separator = "\n\n";
@@ -24,9 +22,6 @@ impl TaskPartOne for Day1 {
 
         Ok(most_calories.to_string())
     }
-}
-
-impl TaskPartTwo for Day1 {
     fn task_part_two(&self, input_file: &str) -> Result<String, TaskError> {
         let file_contents = read_task_input_file(input_file)?;
         let separator = "\n\n";
@@ -49,3 +44,7 @@ impl TaskPartTwo for Day1 {
             .to_string())
     }
 }
+
+// impl TaskPartOne for Day1 {}
+
+// impl TaskPartTwo for Day1 {}

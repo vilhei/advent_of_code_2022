@@ -1,9 +1,9 @@
+mod main_utils;
+
 use std::env;
 
-use advents::{
-    utils::{Task, TaskError},
-    *,
-};
+use advents::{utils::Task, *};
+use main_utils::handle_answer;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -18,6 +18,7 @@ fn main() {
         1 => Box::new(Day1),
         2 => Box::new(Day2),
         3 => Box::new(Day3),
+        4 => Box::new(Day4),
         _ => panic!("Not acceptable day argument"),
     };
 
@@ -25,18 +26,4 @@ fn main() {
     handle_answer(&part_one_result, day);
     let part_two_result = advent.task_part_two(&file_path);
     handle_answer(&part_two_result, day);
-}
-
-fn handle_answer(res: &Result<String, TaskError>, day: u64) {
-    if let Ok(answer) = res {
-        println!("Day {day} answer :\n{answer}");
-    } else {
-        let e = res.as_ref().unwrap_err();
-        match e {
-            TaskError::InvalidFilePath(reason) => {
-                println!("Day {day} answer :\n{}", reason)
-            }
-            TaskError::NotImplemented(n) => panic!("Task {n} not implemented"),
-        }
-    }
 }

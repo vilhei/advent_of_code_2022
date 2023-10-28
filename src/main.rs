@@ -13,12 +13,12 @@ fn main() {
 
     let day: u64 = args[1].parse().expect("Give a number");
     let file_path = format!("./inputs/day{day}.txt");
-
     let advent: Box<dyn Task> = match day {
         1 => Box::new(Day1),
         2 => Box::new(Day2),
         3 => Box::new(Day3),
         4 => Box::new(Day4),
+        5 => Box::new(Day5),
         _ => panic!("Not acceptable day argument"),
     };
 

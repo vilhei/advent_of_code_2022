@@ -1,5 +1,6 @@
 use std::fs;
 
+#[derive(Debug)]
 pub enum TaskError {
     InvalidFilePath(String),
     NotImplemented(usize),
@@ -12,7 +13,6 @@ pub fn read_task_input_file(path: &str) -> Result<String, TaskError> {
     Ok(file_contents)
 }
 
-// pub trait Task: TaskPartOne + TaskPartTwo {}
 pub trait Task {
     fn task_part_one(&self, _input_file: &str) -> Result<String, TaskError> {
         Err(TaskError::NotImplemented(1))
@@ -21,15 +21,3 @@ pub trait Task {
         Err(TaskError::NotImplemented(2))
     }
 }
-
-// pub trait TaskPartOne {
-//     fn task_part_one(&self, _input_file: &str) -> Result<String, TaskError> {
-//         Err(TaskError::NotImplemented(1))
-//     }
-// }
-
-// pub trait TaskPartTwo {
-//     fn task_part_two(&self, _input_file: &str) -> Result<String, TaskError> {
-//         Err(TaskError::NotImplemented(2))
-//     }
-// }

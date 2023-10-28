@@ -14,3 +14,5 @@ name = "advent_of_code_2022"
 path = "src/main.rs"
 
 [dependencies]
+log = "0.4.20"
+nom = "7.1.3"

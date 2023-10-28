@@ -1,3 +1,4 @@
+use std::str::Split;
 use crate::utils::{read_task_input_file, Task};
 
 pub struct Day4;
@@ -8,30 +9,15 @@ impl Task for Day4 {
         let lines = file_contents.split('\n');
         let lines = lines.map(|line| {
             let mut itr = line.split(',');
-            let left = itr
-                .next()
-                .expect("Line did not contain 2 values separated by comma");
-            let right = itr
-                .next()
-                .expect("Line did not contain 2 values separated by comma");
+            let (left, right) = Self::extract_2_values(&mut itr);
 
-            itr = left.split('-');
-            let left_s = itr
-                .next()
-                .expect("Left did not have 2 values separated by -");
-            let left_e = itr
-                .next()
-                .expect("Left did not have 2 values separated by -");
+            let mut itr2 = left.split('-');
+            let (left_s, left_e) = Self::extract_2_values(&mut itr2);
 
-            itr = right.split('-');
-            let right_s = itr
-                .next()
-                .expect("Right did not have 2 values separated by -");
-            let right_e = itr
-                .next()
-                .expect("Right did not have 2 values separated by -");
+            let mut itr3 = right.split('-');
+            let (right_s, right_e) = Self::extract_2_values(&mut itr3);
 
-            [(left_s, left_e), (right_s, right_e)]
+            [(left_s.to_string(), left_e.to_string()), (right_s.to_string(), right_e.to_string())]
         });
 
         let mut fully_contained_total = 0;
@@ -61,30 +47,15 @@ impl Task for Day4 {
         let lines = file_contents.split('\n');
         let lines = lines.map(|line| {
             let mut itr = line.split(',');
-            let left = itr
-                .next()
-                .expect("Line did not contain 2 values separated by comma");
-            let right = itr
-                .next()
-                .expect("Line did not contain 2 values separated by comma");
+            let (left, right) = Self::extract_2_values(&mut itr);
 
-            itr = left.split('-');
-            let left_s = itr
-                .next()
-                .expect("Left did not have 2 values separated by -");
-            let left_e = itr
-                .next()
-                .expect("Left did not have 2 values separated by -");
+            let mut itr2 = left.split('-');
+            let (left_s, left_e) = Self::extract_2_values(&mut itr2);
 
-            itr = right.split('-');
-            let right_s = itr
-                .next()
-                .expect("Right did not have 2 values separated by -");
-            let right_e = itr
-                .next()
-                .expect("Right did not have 2 values separated by -");
+            let mut itr3 = right.split('-');
+            let (right_s, right_e) = Self::extract_2_values(&mut itr3);
 
-            [(left_s, left_e), (right_s, right_e)]
+            [(left_s.to_string(), left_e.to_string()), (right_s.to_string(), right_e.to_string())]
         });
 
         let mut fully_contained_total = 0;
@@ -117,5 +88,17 @@ impl Task for Day4 {
         });
 
         Ok(fully_contained_total.to_string())
+    }
+}
+
+impl Day4 {
+    fn extract_2_values<'a>(itr: &'a mut Split<char>) -> (&'a str, &'a str) {
+        let left = itr
+            .next()
+            .expect("Line did not contain 2 values separated by comma");
+        let right = itr
+            .next()
+            .expect("Line did not contain 2 values separated by comma");
+        (left, right)
     }
 }

@@ -9,13 +9,25 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceRoot}/target/debug/advent_of_code_2022.exe",
-            "args": ["4"],
+            "args": ["6"],
             "stopAtEntry": false,
             "cwd": "${workspaceRoot}",
             "environment": [],
             "console": "integratedTerminal",
             "preLaunchTask": "rust: cargo build",
         },
+        {
+            "name": "Run Test Debugger",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/advent_of_code_2022.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "preLaunchTask": "cargo test build",
+        }
 
         
         // {

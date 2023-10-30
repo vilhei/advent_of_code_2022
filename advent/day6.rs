@@ -29,9 +29,19 @@ fn find_n_distinct_characters(file_contents: String, n: usize) -> Result<String,
                 }
                 s2[idx] = *c;
             }
-            
+            // let mut buffer = 0u32;
+
+            // for c in *window {
+            //     if buffer & 1 << (*c as u8 % 32) == 0u32 {
+            //         buffer |= 1 << (*c as u8 % 32);
+            //         continue;
+            //     }
+
+            //     return false;
+            // }
+
             true
-            // Using HashSet is a lot slower than the static alloy (~850 ms vs 0.15 ms on my machine).
+            // Using HashSet is a lot slower than the static array (~850 ms vs 0.15 ms on my machine).
 
             // let s: HashSet<&char> = HashSet::from_iter(*window);
             // s.len() >= n
